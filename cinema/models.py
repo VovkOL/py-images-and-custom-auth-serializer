@@ -35,12 +35,17 @@ class Actor(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
+def bus_image_path(instance: "Movie", filename: str) -> str:
+
+
+
 class Movie(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     duration = models.IntegerField()
     genres = models.ManyToManyField(Genre)
     actors = models.ManyToManyField(Actor)
+    image = models.ImageField(null=True, upload_to="media/upload/")
 
     class Meta:
         ordering = ["title"]
